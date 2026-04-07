@@ -1,5 +1,12 @@
 
 
+## Installation
+
+```bash
+/plugin marketplace add 2389-research/claude-plugins
+/plugin install prbuddy@2389-research
+```
+
 ---
 
 If PRBuddy got your PR to green faster, a ⭐ helps us know it's landing.
