@@ -1,6 +1,6 @@
 ---
 name: prbuddy:reviews
-description: Review comment triage and handling. Triggers on "review comments", "address feedback", "reviewer asked", "changes requested", "handle comments", "triage reviews".
+description: Triages PR review comments by fixing critical ones (with systematic prevention) and converting nitpicks to tracked GitHub issues. Use when a PR has unresolved review comments, changes have been requested, or the user says "address feedback", "reviewer asked", "changes requested", or "triage reviews".
 ---
 
 <!-- ABOUTME: Review comment handling sub-skill for prbuddy -->
@@ -85,6 +85,8 @@ Code context: [relevant file/function]
 What's the best fix approach considering the reviewer's expertise?"
 ```
 
+**If `mcp__pal__chat` is unavailable:** Analyze the reviewer's comment directly against the PR goal and linked issues. Read the referenced code, identify the clearest fix that satisfies the reviewer's concern, and proceed to 4c without PAL consultation.
+
 #### 4c: Implement Fix
 
 Make the code changes.
@@ -93,12 +95,7 @@ Make the code changes.
 
 What systematic change would prevent this class of issue?
 
-1. **Linter rule** - Add ESLint/Prettier/etc. rule (strongest)
-2. **Pre-commit hook** - Add check to `.pre-commit-config.yaml`
-3. **CI check** - Add earlier/faster check
-4. **Type system** - Stricter TypeScript config
-5. **Test** - Add test for this case
-6. **Documentation** - Update CLAUDE.md if agent guidance (weakest)
+See CLAUDE.md for the prevention hierarchy.
 
 #### 4e: Commit
 
