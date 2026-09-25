@@ -1,6 +1,6 @@
 ---
 name: prbuddy:ci
-description: CI/workflow monitoring and fixing. Triggers on "CI failing", "workflow failed", "checks red", "build broken", "tests failing", "rerun workflows".
+description: Monitors CI/workflow status for a PR, diagnoses failures, fixes the root cause, and adds systematic prevention. Use when CI checks are failing, builds are broken, tests are failing, or the user says "CI failing", "workflow failed", "checks red", or "rerun workflows".
 ---
 
 <!-- ABOUTME: CI monitoring sub-skill for prbuddy -->
@@ -123,6 +123,8 @@ Context: [relevant code/config]
 What's the root cause and recommended fix?"
 ```
 
+**If `mcp__pal__chat` is unavailable:** Diagnose directly from the logs — re-read the full failed step output, search the codebase for the failing symbol or path, and apply standard root-cause analysis (is it an env issue, a dependency change, a logic error?). Proceed to Step 7 without PAL consultation.
+
 ### Step 7: Fix the Acute Issue
 
 Make the code changes to fix the immediate failure.
@@ -131,13 +133,7 @@ Make the code changes to fix the immediate failure.
 
 Ask: "What would have caught this earlier?"
 
-**Prevention hierarchy (prefer higher):**
-1. **Linter rule** - Add ESLint/Prettier/etc. rule
-2. **Pre-commit hook** - Add check to `.pre-commit-config.yaml`
-3. **CI check** - Add earlier/faster check
-4. **Type system** - Stricter TypeScript config
-5. **Test** - Add test for this case
-6. **Documentation** - Update CLAUDE.md if agent guidance
+See CLAUDE.md for the prevention hierarchy.
 
 ### Step 9: Commit Both Fixes
 

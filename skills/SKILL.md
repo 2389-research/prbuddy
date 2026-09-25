@@ -1,6 +1,6 @@
 ---
 name: prbuddy
-description: PR health assistant - monitors CI status, triages review comments, fixes issues with systematic prevention. Triggers on "check my PR", "PR health", "make PR green", "fix PR", "ready to merge", "handle PR feedback".
+description: Monitors PR health by checking CI status and triaging review comments, then fixes issues and implements systematic prevention. Use when CI checks are failing, review comments are unresolved, or the user says "check my PR", "make PR green", "fix PR", "ready to merge", or "handle PR feedback".
 ---
 
 <!-- ABOUTME: Main orchestrator skill for PR health management -->
@@ -50,6 +50,10 @@ Verify installation:
 ```bash
 gh pr-review --help
 ```
+
+### Optional: PAL MCP Server
+
+The `prbuddy:ci` and `prbuddy:reviews` sub-skills can consult the team's PAL MCP server (`mcp__pal__chat`) for expert opinion on complex CI failures and review comment analysis. If PAL is unavailable, both sub-skills fall back to direct log analysis and code inspection without it.
 
 ## When This Skill Applies
 
